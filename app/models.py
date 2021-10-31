@@ -24,3 +24,8 @@ class Drink(models.Model):
 
     def __str__(self):
         return "[" + str(self.drink_id) + "] " + self.drink_name
+
+
+
+
+        
