@@ -34,7 +34,6 @@ mkl-service
 mock
 more-itertools
 multipledispatch
-navigator-updater
 nltk
 nose
 numba
