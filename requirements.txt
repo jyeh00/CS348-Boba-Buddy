@@ -15,6 +15,7 @@ cython
 cytoolz
 distributed
 django-imagefit
+django-heroku
 fastcache
 flake8
 flask

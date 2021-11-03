@@ -1,5 +1,3 @@
-anaconda-navigator
-anaconda-project
 argh
 asn1crypto
 astropy
@@ -12,8 +10,6 @@ boto
 bottleneck
 brotlipy
 conda-build
-conda-package-handling
-conda-verify
 contextlib2
 cython
 cytoolz
@@ -38,7 +34,6 @@ mkl-service
 mock
 more-itertools
 multipledispatch
-navigator-updater
 nltk
 nose
 numba
