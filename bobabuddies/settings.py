@@ -87,8 +87,8 @@ DATABASES = {
         'NAME': 'bobabuddy',
         'USER': 'root',
         'PASSWORD': 'BobaBuddy',
-        'HOST': '127.0.0.1',
-        'PORT': '3307',
+        'HOST': '34.123.254.147',
+        'PORT': '3306',
     }
 }
 
