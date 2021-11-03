@@ -7,8 +7,9 @@ from django.urls import include, path
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.main),
     path('test/', views.testpage),
-    path('main/', views.main),
-    path('dashboard/', views.dashboard)
+    path('admin/', views.index, name='index'),
+    path('dashboard/', views.dashboard),
+    path('create_order/', views.createOrder, name="create_order")
 ]

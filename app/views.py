@@ -15,3 +15,8 @@ def main(request):
 
 def dashboard(request):
     return render(request, 'apptemplates/dashboard.html')
+
+
+def createOrder(request):
+    context = {}
+    return render(request, 'accounts/order_form.html', context)
