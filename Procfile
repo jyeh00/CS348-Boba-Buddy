@@ -1,1 +1,1 @@
-web: gunicorn bobabuddies --log-file -
+web: gunicorn bobabuddies.wsgi
