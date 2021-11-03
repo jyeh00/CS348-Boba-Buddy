@@ -1,2 +1,4 @@
-_pycache_/
+app/_pycache_/
 migrations/_pycache_/
+bobabuddies/_pycache_/
+db.sqlite3
