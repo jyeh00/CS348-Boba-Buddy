@@ -26,7 +26,7 @@ SECRET_KEY = 'h^_6&9moyl46tl84b4n!k$d4_+zzbzdmzg#fq%tj8j8lfhi#$#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['boba-buddy.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
