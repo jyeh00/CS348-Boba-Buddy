@@ -1,5 +1,18 @@
-{% extends 'accounts/main.html'%} 
+{% extends 'apptemplates/main.html'%} 
+{% block content %}
 
-<form action="" method="POST">
-    <input type="submit" name="Submit">
-</form>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Add Order</h1>
+        <div class="card card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form}}
+            
+                <input type="submit" name="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
