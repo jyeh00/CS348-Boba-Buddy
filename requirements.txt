@@ -10,7 +10,6 @@ boto
 bottleneck
 brotlipy
 conda-build
-conda-verify
 contextlib2
 cython
 cytoolz
