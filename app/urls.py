@@ -11,5 +11,6 @@ urlpatterns = [
     path('test/', views.testpage),
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard),
-    path('create_order/', views.createOrder, name="create_order")
+    path('create_order/', views.createOrder, name="create_order"),
+    path('order_home/', views.order_homepage, name='order_home')
 ]

@@ -29,3 +29,10 @@ def createOrder(request):
 
     context = {'form':form}
     return render(request, 'apptemplates/order_form.html', context)
+
+
+def order_homepage(request):
+    return render(request, 'apptemplates/order_home.html')
+
+def homePage(request):
+    return render(request, 'apptemplates/homepage.html')
