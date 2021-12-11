@@ -53,10 +53,10 @@ class Drink(models.Model):
         on_delete=models.CASCADE,
         null=True
     ) # Many to one relationship (many Drink to one Topping)
-    drink_flavor = models.CharField(max_length=100)
-    drink_price = models.DecimalField(max_digits=5, decimal_places=2)
-    drink_size = models.CharField(max_length=100, choices=DRINK_SIZE)
-    drink_sugar = models.IntegerField(choices=DRINK_SUGAR)
+    drink_flavor = models.CharField(max_length=100, null=True)
+    drink_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    drink_size = models.CharField(max_length=100, choices=DRINK_SIZE, null=True)
+    drink_sugar = models.IntegerField(choices=DRINK_SUGAR, null=True)
 
     def __str__(self):
         return "[" + str(self.drink_id) + "] " + self.drink_flavor
