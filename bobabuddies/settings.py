@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = 'h^_6&9moyl46tl84b4n!k$d4_+zzbzdmzg#fq%tj8j8lfhi#$#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['boba-buddy.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,8 +89,8 @@ DATABASES = {
         'NAME': 'bobabuddy',
         'USER': 'root',
         'PASSWORD': 'BobaBuddy',
-        'HOST': '127.0.0.1',
-        'PORT': '3307',
+        'HOST': '34.123.254.147',
+        'PORT': '3306',
     }
 }
 
@@ -129,4 +131,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 STATIC_URL = '/static/'
+
+# Activate Django-Heroku
+django_heroku.settings(locals())
