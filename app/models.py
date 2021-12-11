@@ -43,23 +43,23 @@ class Drink(models.Model):
         on_delete=models.CASCADE,
         null=True
     ) # Many to one relationship (many Drink to one Tea)
-    flavor = models.ForeignKey(
-        'Flavor',
-        on_delete=models.CASCADE,
-        null=True
-    ) # Many to one relationship (many Drink to one Flavor)
+    # flavor = models.ForeignKey(
+    #     'Flavor',
+    #     on_delete=models.CASCADE,
+    #     null=True
+    # ) # Many to one relationship (many Drink to one Flavor)
     topping = models.ForeignKey(
         'Topping',
         on_delete=models.CASCADE,
         null=True
     ) # Many to one relationship (many Drink to one Topping)
-    drink_name = models.CharField(max_length=100)
+    drink_flavor = models.CharField(max_length=100)
     drink_price = models.DecimalField(max_digits=5, decimal_places=2)
     drink_size = models.CharField(max_length=100, choices=DRINK_SIZE)
     drink_sugar = models.IntegerField(choices=DRINK_SUGAR)
 
     def __str__(self):
-        return "[" + str(self.drink_id) + "] " + self.drink_name
+        return "[" + str(self.drink_id) + "] " + self.drink_flavor
 
 class Temperature(models.Model):
     temp_id = models.IntegerField(primary_key=True)
@@ -85,13 +85,13 @@ class Tea(models.Model):
     def __str__(self):
         return "[" + str(self.tea_id) + "] " + self.tea_name
 
-class Flavor(models.Model):
-    flavor_id = models.IntegerField(primary_key=True)
-    flavor_name = models.CharField(max_length=100, default='')
-    flavor_price = models.DecimalField(max_digits=5, decimal_places=2)
+# class Flavor(models.Model):
+#     flavor_id = models.IntegerField(primary_key=True)
+#     flavor_name = models.CharField(max_length=100, default='')
+#     flavor_price = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return "[" + str(self.flavor_id) + "] " + self.flavor_name
+#     def __str__(self):
+#         return "[" + str(self.flavor_id) + "] " + self.flavor_name
 
 class Topping(models.Model):
     topping_id = models.IntegerField(primary_key=True)
