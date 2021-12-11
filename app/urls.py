@@ -12,5 +12,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', views.dashboard),
     path('create_order/', views.createOrder, name="create_order"),
-    path('order_home/', views.order_homepage, name='order_home')
+    path('order_home/', views.order_homepage, name='order_home'),
+    path('order_home/popular_drinks', views.popularDrinks, name='popular_drinks')
 ]

@@ -36,3 +36,6 @@ def order_homepage(request):
 
 def homePage(request):
     return render(request, 'apptemplates/homepage.html')
+
+def popularDrinks(request):
+    return render(request, 'apptemplates/popular_drinks.html')
