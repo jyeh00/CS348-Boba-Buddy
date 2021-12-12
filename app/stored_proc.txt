@@ -1,0 +1,14 @@
+# Most popular top 5 drinks
+DELIMITER //
+CREATE PROCEDURE top_five_drinks()
+BEGIN
+	select drink_flavor, count(drink_flavor) as freq
+    from bobabuddy.app_drink
+    group by drink_flavor
+    order by freq DESC
+    limit 5;
+END //
+
+DELIMITER ;
+
+call top_five_drinks()
