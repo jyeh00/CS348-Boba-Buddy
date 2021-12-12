@@ -6,7 +6,7 @@ class Order(models.Model):
     order_price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return "[" + str(self.order_id) + "] Price: $" + self.order_price
+        return "[" + str(self.order_id) + "] Price: $" + str(self.order_price)
 
 class Menu(models.Model):
     MENU_SIZE = [
@@ -102,7 +102,7 @@ class Drink(models.Model):
     drink_sugar = models.IntegerField(choices=DRINK_SUGAR, null=True)
 
     def __str__(self):
-        return "[" + str(self.drink_id) + "] " + self.drink_flavor
+        return "[" + str(self.drink_id) + "] " + str(self.drink_flavor)
 
 class Temperature(models.Model):
     temp_id = models.AutoField(primary_key=True)

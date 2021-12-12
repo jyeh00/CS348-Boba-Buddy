@@ -5,4 +5,4 @@ from .models import Order, Drink
 class OrderForm(ModelForm):
     class Meta:
         model = Drink
-        exclude = ['drink_id', 'order']
+        exclude = ['drink_id', 'order', 'drink_flavor', 'drink_price', 'tea']
