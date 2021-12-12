@@ -17,5 +17,4 @@ urlpatterns = [
     path('stored_proc_all/', views.storedProcedure, name="stored_proc_all"),
     # path('stored_proc_popular/', views.popularDrinks, name="stored_proc_popular"),
     path('order_home/all_drinks/', views.allDrinks, name="all_drinks")
-
 ]

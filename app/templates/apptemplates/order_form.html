@@ -1,14 +1,17 @@
 {% extends 'apptemplates/main.html'%} 
 {% block content %}
 
+
 <div class="row">
     <div class="col-md-12">
         <h1>Add Order</h1>
         <div class="card card-body">
+            <h2>{{ menu }}</h2>
+            <br>
             <form action="" method="POST">
                 {% csrf_token %}
-                {{form}}
-            
+                {{form.as_p }}
+                
                 <input type="submit" name="Submit">
             </form>
         </div>

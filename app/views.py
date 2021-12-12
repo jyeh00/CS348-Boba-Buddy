@@ -21,7 +21,13 @@ def dashboard(request):
 
 
 def createOrder(request):
+    context = {}
+
+    menu = request.POST.get('menu', None)
+    context['menu'] = menu
+
     form = OrderForm()
+    
     if request.method == 'POST':
         #print('Printing POST:', request.POST)
         form = OrderForm(request.POST)
@@ -29,7 +35,7 @@ def createOrder(request):
             form.save()
             return redirect('/')
 
-    context = {'form':form}
+    context['form'] = form
     return render(request, 'apptemplates/order_form.html', context)
 
 
@@ -47,9 +53,10 @@ def allDrinks(request):
     #         form.save()
     #         return redirect('/')
 
-    # context = {'form':form}
     drinks = Menu.objects.all()
-    return render(request, 'apptemplates/all_drinks.html', {'drinks':drinks})
+    context = {}
+    context['drinks'] = drinks
+    return render(request, 'apptemplates/all_drinks.html', context)
 
 cursor1 = connection.cursor()
 def popularDrinks(request):
