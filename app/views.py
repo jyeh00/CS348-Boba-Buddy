@@ -47,8 +47,10 @@ def allDrinks(request):
     #         return redirect('/')
 
     # context = {'form':form}
-    return render(request, 'apptemplates/all_drinks.html')
+    drinks = Menu.objects.all()
+    return render(request, 'apptemplates/all_drinks.html', {'drinks':drinks})
 
 def popularDrinks(request):
-    drinks = Drink.objects.all()
+    drinks = Menu.objects.all()
     return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
+
