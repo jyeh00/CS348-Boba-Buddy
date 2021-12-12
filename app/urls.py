@@ -13,13 +13,6 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('create_order/', views.createOrder, name="create_order"),
     path('order_home/', views.order_homepage, name='order_home'),
-<<<<<<< HEAD
-    path('order_home/popular_drinks/', views.popularDrinks, name='popular_drinks')
-=======
-<<<<<<< HEAD
+    path('order_home/popular_drinks/', views.popularDrinks, name='popular_drinks'),
     path('all_drinks/', views.allDrinks, name="all_drinks")
-=======
-    path('order_home/popular_drinks', views.popularDrinks, name='popular_drinks')
->>>>>>> 9a5d6a8eba0f8bec90da2b77b5628ef1842bce26
->>>>>>> 01d9d983853f60fe45e7aafa244956f96547eb42
 ]

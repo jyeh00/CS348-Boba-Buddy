@@ -6,7 +6,7 @@ class Order(models.Model):
     order_price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
-        return "[" + str(self.order_id) + "] Price: $" + self.order_price
+        return "[" + str(self.order_id) + "] Price: $" + str(self.order_price)
 
 class Menu(models.Model):
     MENU_SIZE = [
