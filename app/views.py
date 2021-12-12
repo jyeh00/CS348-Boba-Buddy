@@ -36,3 +36,14 @@ def order_homepage(request):
 
 def homePage(request):
     return render(request, 'apptemplates/homepage.html')
+
+def allDrinks(request):
+    
+    # if request.method == 'GET':
+    #     form = request.POST
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect('/')
+
+    # context = {'form':form}
+    return render(request, 'apptemplates/all_drinks.html')
