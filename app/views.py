@@ -39,6 +39,7 @@ def order_homepage(request):
 def homePage(request):
     return render(request, 'apptemplates/homepage.html')
 
+
 def allDrinks(request):
     
     # if request.method == 'GET':
@@ -48,15 +49,16 @@ def allDrinks(request):
     #         return redirect('/')
 
     # context = {'form':form}
-    return render(request, 'apptemplates/all_drinks.html')
+    drinks = Menu.objects.all()
+    return render(request, 'apptemplates/all_drinks.html', {'drinks':drinks})
 
 cursor1 = connection.cursor()
 def popularDrinks(request):
     cursor1.execute('call top_five_drinks')
-    result = cursor1.fetchall()
-    return render(request, 'stored_proc_popular.html', {'result':result})
-    # drinks = Drink.objects.all()
-    # return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
+    drinks = cursor1.fetchall()
+    return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
+    #drinks = Menu.objects.all()
+    #return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
 
 cursor2 = connection.cursor()
 def storedProcedure(request):
