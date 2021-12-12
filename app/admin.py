@@ -1,8 +1,9 @@
 from django.contrib import admin
-from . models import Drink, Order, Temperature, Milk, Tea, Topping
+from . models import Drink, Menu, Order, Temperature, Milk, Tea, Topping
 
 # Register your models here.
 admin.site.register(Drink)
+admin.site.register(Menu)
 admin.site.register(Order)
 admin.site.register(Temperature)
 admin.site.register(Milk)

@@ -8,6 +8,49 @@ class Order(models.Model):
     def __str__(self):
         return "[" + str(self.order_id) + "] Price: $" + self.order_price
 
+class Menu(models.Model):
+    MENU_SIZE = [
+        ('S', 'Small'),
+        ('M', 'Medium'),
+        ('L', 'Large'),
+    ]
+
+    MENU_SUGAR = [
+        (0, 0),
+        (25, 25),
+        (50, 50),
+        (75, 75),
+        (100, 100),
+    ]
+    menu_id = models.AutoField(primary_key=True)
+    temperature = models.ForeignKey(
+        'Temperature',
+        on_delete=models.CASCADE,
+        null=True
+    ) # Many to one relationship (many Drink to one Temperature)
+    milk = models.ForeignKey(
+        'Milk',
+        on_delete=models.CASCADE,
+        null=True
+    ) # Many to one relationship (many Drink to one Milk)
+    tea = models.ForeignKey(
+        'Tea',
+        on_delete=models.CASCADE,
+        null=True
+    )
+    topping = models.ForeignKey(
+        'Topping',
+        on_delete=models.CASCADE,
+        null=True
+    ) # Many to one relationship (many Drink to one Topping)
+    menu_flavor = models.CharField(max_length=100, null=True)
+    menu_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    menu_size = models.CharField(max_length=100, choices=MENU_SIZE, null=True)
+    menu_sugar = models.IntegerField(choices=MENU_SUGAR, null=True)
+
+    def __str__(self):
+        return "[" + str(self.menu_id) + "] " + self.menu_flavor
+
 class Drink(models.Model):
     DRINK_SIZE = [
         ('S', 'Small'),
@@ -53,10 +96,10 @@ class Drink(models.Model):
         on_delete=models.CASCADE,
         null=True
     ) # Many to one relationship (many Drink to one Topping)
-    drink_flavor = models.CharField(max_length=100)
-    drink_price = models.DecimalField(max_digits=5, decimal_places=2)
-    drink_size = models.CharField(max_length=100, choices=DRINK_SIZE)
-    drink_sugar = models.IntegerField(choices=DRINK_SUGAR)
+    drink_flavor = models.CharField(max_length=100, null=True)
+    drink_price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
+    drink_size = models.CharField(max_length=100, choices=DRINK_SIZE, null=True)
+    drink_sugar = models.IntegerField(choices=DRINK_SUGAR, null=True)
 
     def __str__(self):
         return "[" + str(self.drink_id) + "] " + self.drink_flavor
