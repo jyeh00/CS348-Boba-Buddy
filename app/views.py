@@ -38,7 +38,6 @@ def order_homepage(request):
 def homePage(request):
     return render(request, 'apptemplates/homepage.html')
 
-<<<<<<< HEAD
 def allDrinks(request):
     
     # if request.method == 'GET':
@@ -49,12 +48,7 @@ def allDrinks(request):
 
     # context = {'form':form}
     return render(request, 'apptemplates/all_drinks.html')
-=======
+
 def popularDrinks(request):
-<<<<<<< HEAD
     drinks = Drink.objects.all()
     return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
-=======
-    return render(request, 'apptemplates/popular_drinks.html')
->>>>>>> 9a5d6a8eba0f8bec90da2b77b5628ef1842bce26
->>>>>>> 01d9d983853f60fe45e7aafa244956f96547eb42
