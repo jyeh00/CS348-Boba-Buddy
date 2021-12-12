@@ -1,18 +1,30 @@
 {% extends 'apptemplates/main.html'%} 
 {% block content %}
+<br>
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>All Drinks</h1>
-        <div class="card card-body">
-            <form action="" method="GET">
-                {% csrf_token %}
-                {{form}}
-            
-                
-            </form>
-        </div>
-    </div>
-</div>
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Drinks</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Drink Name</th>
+						</tr>
 
-{% endblock %}
+						{% for i in drinks %}
+							<tr>
+								<td>
+                  <button type="button" class="list-group-item list-group-item-action">{{i.menu_flavor}}</button>
+                </td>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+  {% endblock %}

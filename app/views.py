@@ -47,9 +47,9 @@ def allDrinks(request):
     #         return redirect('/')
 
     # context = {'form':form}
-    return render(request, 'apptemplates/all_drinks.html')
-def popularDrinks(request):
-    drinks = Drink.objects.all()
-    return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
+    drinks = Menu.objects.all()
+    return render(request, 'apptemplates/all_drinks.html', {'drinks':drinks})
 
-# def storedProcedure(request):
+def popularDrinks(request):
+    drinks = Menu.objects.all()
+    return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
