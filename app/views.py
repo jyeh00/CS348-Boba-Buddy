@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db import connection
 from .models import *
 from .forms import OrderForm
 from .filters import OrderFilter
@@ -48,8 +49,17 @@ def allDrinks(request):
 
     # context = {'form':form}
     return render(request, 'apptemplates/all_drinks.html')
-def popularDrinks(request):
-    drinks = Drink.objects.all()
-    return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
 
-# def storedProcedure(request):
+cursor1 = connection.cursor()
+def popularDrinks(request):
+    cursor1.execute('call top_five_drinks')
+    result = cursor1.fetchall()
+    return render(request, 'stored_proc_popular.html', {'result':result})
+    # drinks = Drink.objects.all()
+    # return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
+
+cursor2 = connection.cursor()
+def storedProcedure(request):
+    cursor2.execute('call select_menu')
+    result = cursor2.fetchall()
+    return render(request, 'stored_proc_all.html', {'result':result})
