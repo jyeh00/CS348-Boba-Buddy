@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import OrderForm
+from .filters import OrderFilter
 
 # Create your views here.
 def index(request):
@@ -38,4 +39,5 @@ def homePage(request):
     return render(request, 'apptemplates/homepage.html')
 
 def popularDrinks(request):
-    return render(request, 'apptemplates/popular_drinks.html')
+    drinks = Drink.objects.all()
+    return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
