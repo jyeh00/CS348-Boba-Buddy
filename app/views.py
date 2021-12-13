@@ -23,14 +23,37 @@ def dashboard(request):
 def createOrder(request):
     context = {}
 
-    menu = request.POST.get('menu', None)
-    context['menu'] = menu
+    drinks = Menu.objects.all()
+    context['drinks'] = drinks
 
-    form = OrderForm()
+    #grabs the menu item clicked button. Converts it to a string. Adds string to context dictionary.
+    menu_data = request.POST.get('menu', None)
+    string_menu = str(menu_data)
+    context['menu'] = string_menu
+
+    try:
+        selected_menu_item = Menu.objects.get(menu_flavor=string_menu)
+
+        print(selected_menu_item.menu_flavor)
+        print(selected_menu_item.tea)
     
-    if request.method == 'POST':
-        #print('Printing POST:', request.POST)
-        form = OrderForm(request.POST)
+        form = OrderForm()
+        if request.method == 'POST':
+            #print('Printing POST:', request.POST)
+            form = OrderForm(initial={
+                        'drink_flavor': selected_menu_item.menu_flavor,
+                        'tea': selected_menu_item.tea})
+        
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    except Menu.DoesNotExist:
+        selected_menu_item = None
+        form = OrderForm()
+        if request.method == 'POST':
+            #print('Printing POST:', request.POST)
+            form = OrderForm(request.POST)
+        
         if form.is_valid():
             form.save()
             return redirect('/')
