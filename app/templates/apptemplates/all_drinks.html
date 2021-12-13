@@ -20,7 +20,7 @@
                                 <form action="../../../create_order/" method="POST" id="menuForm">
                                     {% csrf_token %}
 								    <td>
-                                        <button type="submit" name="menu" value="{{i.menu_flavor}}" form="menuForm" class="list-group-item list-group-item-action">{{i.menu_flavor}}</button>
+                                        <button type="submit" name="menu" value="{{ i.menu_flavor }}" form="menuForm" class="list-group-item list-group-item-action">{{ i.menu_flavor }}</button>
                                     </td>
                                 </form>
 							</tr>

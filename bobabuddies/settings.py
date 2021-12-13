@@ -93,6 +93,7 @@ DATABASES = {
         'PASSWORD': 'BobaBuddy',
         'HOST': '34.123.254.147',
         'PORT': '3306',
+        'DISABLE_SERVER_SIDE_CURSORS': True,
     }
 }
 
