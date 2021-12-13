@@ -1,0 +1,36 @@
+{% extends 'apptemplates/main.html'%} 
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>All Drinks</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Drink Name</th>
+                            <th></th>
+						</tr>
+
+						{% for i in drinks %}
+							<tr>
+                                <form action="../../../create_order/" method="POST" id="menuForm">
+                                    {% csrf_token %}
+								    <td>
+                                        <button type="submit" name="menu" value="{{ i.menu_flavor }}" form="menuForm" class="list-group-item list-group-item-action">{{ i.menu_flavor }}</button>
+                                    </td>
+                                </form>
+							</tr>
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+
+  {% endblock %}

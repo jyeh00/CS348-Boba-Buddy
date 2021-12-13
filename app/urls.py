@@ -13,5 +13,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard),
     path('create_order/', views.createOrder, name="create_order"),
     path('order_home/', views.order_homepage, name='order_home'),
-    path('order_home/popular_drinks', views.popularDrinks, name='popular_drinks')
+    path('order_home/popular_drinks/', views.popularDrinks, name='popular_drinks'),
+    path('stored_proc_all/', views.storedProcedure, name="stored_proc_all"),
+    # path('stored_proc_popular/', views.popularDrinks, name="stored_proc_popular"),
+    path('order_home/all_drinks/', views.allDrinks, name="all_drinks")
 ]
