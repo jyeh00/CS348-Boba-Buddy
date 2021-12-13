@@ -36,13 +36,20 @@ def createOrder(request):
 
         print(selected_menu_item.menu_flavor)
         print(selected_menu_item.tea)
+        print(selected_menu_item.menu_size)
+        print(selected_menu_item.menu_sugar)
     
         form = OrderForm()
         if request.method == 'POST':
             #print('Printing POST:', request.POST)
             form = OrderForm(initial={
                         'drink_flavor': selected_menu_item.menu_flavor,
-                        'tea': selected_menu_item.tea})
+                        'tea': selected_menu_item.tea,
+                        'temperature': selected_menu_item.temperature,
+                        'milk': selected_menu_item.milk,
+                        'drink_size': selected_menu_item.menu_size,
+                        'drink_sugar': selected_menu_item.menu_sugar,
+                        'topping': selected_menu_item.topping})
         
         if form.is_valid():
             form.save()
