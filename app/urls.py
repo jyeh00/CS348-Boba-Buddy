@@ -3,6 +3,7 @@ from django.urls import path
 from . import views
 from django.contrib import admin
 from django.urls import include, path
+from django.conf.urls import include
 
 
 
@@ -18,5 +19,10 @@ urlpatterns = [
     # path('stored_proc_popular/', views.popularDrinks, name="stored_proc_popular"),
     path('order_home/all_drinks/', views.allDrinks, name="all_drinks"),
     path('order_lookup/', views.orderLookup, name = "order_lookup"),
-    path('order_drink_list/', views.orderDrinkList, name="order_drink_list")
+    path('order_drink_list/', views.orderDrinkList, name="order_drink_list"),
+    path('checkout/', views.checkout, name="checkout"),
+    path('checkout/order_checkout/', views.orderCheckout, name="checkout"),
+    path('qr_code/', include('qr_code.urls', namespace="qr_code")),
 ]
+
+SERVE_QR_CODE_IMAGE_PATH = 'qr-code-image/'

@@ -97,10 +97,33 @@ def orderDrinkList(request):
     context = {}
     orderNum = request.POST.get('orderNum', None)
     orderNumString = str(orderNum)
-    print("poop is " + orderNumString)
     context['order'] = orderNumString
 
     drinks =  Drink.objects.all()
     context['drinks'] = drinks
     return render(request, 'apptemplates/order_drink_list.html', context)
    
+
+def checkout(request):
+    # context = {}
+    # orderNum = request.POST.get('orderNum', None)
+    # orderNumString = str(orderNum)
+    # context['order'] = orderNumString
+
+    # drinks =  Drink.objects.all()
+    # context['drinks'] = drinks
+    # return render(request, 'apptemplates/order_drink_list.html', context)
+    return render(request, 'apptemplates/checkout.html')
+   
+
+def orderCheckout(request):
+    context = {}
+    orderNum = request.POST.get('orderNum', None)
+    orderNumString = str(orderNum)
+    context['order'] = orderNumString
+
+    drinks =  Drink.objects.all()
+    context['drinks'] = drinks
+    return render(request, 'apptemplates/order_checkout.html', context)
+
+

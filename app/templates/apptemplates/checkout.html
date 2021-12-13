@@ -1,33 +1,31 @@
-{% extends 'apptemplates/main.html'%} 
+{% extends 'apptemplates/main.html'%}
 {% block content %}
-
 <br>
 
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Order Lookup</h5>
+					<h5>Checkout</h5>
 				</div>
 				<div class="card card-body">
 					<table class="table">
 						
-                        <form action="../../../order_drink_list/" method="post" id="lookupForm">
+                        <form action="../checkout/order_checkout/" method="post" id="lookupForm">
                         {% csrf_token %} 
                         <div>
-                          <label for="orderNum">To look at your order, enter in your order number: </label>
+                          <label for="orderNum">Enter in your order number to review your order: </label>
                       
                           <input type="text" name="orderNum" form="lookupForm" id="orderNum" required>
                         </div>
                         <div class="form-example">
-                          <input type="submit" value="Search">
+                          <input type="submit" value="Find">
                         </div>
                         </form>
                       		
 					</table>
+                    
 				</div>
 			</div>
 			
 		</div>
-
-
-  {% endblock %}
+{% endblock %}
