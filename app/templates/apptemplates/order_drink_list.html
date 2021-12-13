@@ -1,0 +1,21 @@
+{% extends 'apptemplates/main.html'%} 
+{% block content %}
+
+<body>
+    <h1>
+        Order ID: {{ order }}
+    </h1>
+    <div>
+        <ul class="list-group">
+            {% for i in drinks %}
+                {% if i.order_id|stringformat:"s" == order|stringformat:"s" %}
+                    <li class="list-group-item">Drink Name:&nbsp;{{ i.drink_flavor }} &emsp; Price:&nbsp;${{ i.drink_price }} &emsp; Milk:&nbsp;{{ i.milk }} &emsp; Topping:&nbsp;{{ i.topping }} &emsp; Sugar:&nbsp;{{ i.drink_sugar }} &emsp; Size:&nbsp;{{ i.drink_size }} &emsp; Temperature:&nbsp;{{ i.temperature }}</li>
+                {% endif %}
+            {% endfor %}  
+          </ul>
+    </div>  
+
+</body>
+
+
+{% endblock %}

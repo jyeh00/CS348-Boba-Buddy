@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db import connection
 from .models import *
-from .forms import OrderForm
+from .forms import OrderForm, LookupForm
 from .filters import OrderFilter
 
 # Create your views here.
@@ -68,7 +68,6 @@ def order_homepage(request):
 def homePage(request):
     return render(request, 'apptemplates/homepage.html')
 
-
 def allDrinks(request):
     
     # if request.method == 'GET':
@@ -95,3 +94,36 @@ def storedProcedure(request):
     cursor2.execute('call select_menu')
     result = cursor2.fetchall()
     return render(request, 'stored_proc_all.html', {'result':result})
+
+def orderLookup(request):
+
+    lookup = Order.objects.all()
+
+    context = {}
+    context['lookup'] = lookup
+    
+    return render(request, 'apptemplates/order_lookup.html', context)
+    # lookup = LookupForm()
+    
+    # if request.method == 'GET':
+    #     #print('Printing POST:', request.POST)
+    #     lookup = OrderForm(request.GET)
+    #     if lookup.is_valid():
+    #         lookup.save()
+    #         return redirect('/')
+    
+    # # context['lookup'] = lookup
+    # return render(request, 'apptemplates/order_lookup.html', {'lookup': lookup})
+
+
+def orderDrinkList(request):
+    context = {}
+    orderNum = request.POST.get('orderNum', None)
+    orderNumString = str(orderNum)
+    print("poop is " + orderNumString)
+    context['order'] = orderNumString
+
+    drinks =  Drink.objects.all()
+    context['drinks'] = drinks
+    return render(request, 'apptemplates/order_drink_list.html', context)
+   

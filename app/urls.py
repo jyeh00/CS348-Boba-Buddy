@@ -16,5 +16,7 @@ urlpatterns = [
     path('order_home/popular_drinks/', views.popularDrinks, name='popular_drinks'),
     path('stored_proc_all/', views.storedProcedure, name="stored_proc_all"),
     # path('stored_proc_popular/', views.popularDrinks, name="stored_proc_popular"),
-    path('order_home/all_drinks/', views.allDrinks, name="all_drinks")
+    path('order_home/all_drinks/', views.allDrinks, name="all_drinks"),
+    path('order_lookup/', views.orderLookup, name = "order_lookup"),
+    path('order_drink_list/', views.orderDrinkList, name="order_drink_list")
 ]

@@ -1,0 +1,40 @@
+{% extends 'apptemplates/main.html'%} 
+{% block content %}
+
+<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Order Lookup</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						
+                        <form action="../../../order_drink_list/" method="post" id="lookupForm">
+                        {% csrf_token %} 
+                         <div>
+                          <label for="orderNum">To look at your order, enter in your order number: </label>
+                      
+                          <input type="text" name="orderNum" form="lookupForm" id="orderNum" required>
+                        </div>
+                        <div class="form-example">
+                          <input type="submit" value="Search">
+                        </div>
+                      </form>
+                      
+                      <!--<form method="GET">  
+                         
+                        {{ form.as_p }}  
+                        <button type="submit" class="save btn btn-default" style="height:40px;width:200px">Search</button> 
+                </form>  -->
+                      
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+
+  {% endblock %}
