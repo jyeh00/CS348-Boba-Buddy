@@ -7,6 +7,12 @@
         <h1>Add Order</h1>
         <div class="card card-body">
             <h2>{{ menu }}</h2>
+            <!--{% for i in drinks %}
+
+                {% if menu|stringformat:"s" == i.menu_flavor|stringformat:"s" %}   
+                <h4>{{ i.menu_flavor }}</h4>
+                {% endif %}
+            {% endfor %} -->
             <br>
             <form action="" method="POST">
                 {% csrf_token %}
