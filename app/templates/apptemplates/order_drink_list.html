@@ -1,4 +1,5 @@
 {% extends 'apptemplates/main.html'%} 
+{% load qr_code %}
 {% block content %}
 
 <body>
@@ -9,12 +10,13 @@
         <ul class="list-group">
             {% for i in drinks %}
                 {% if i.order_id|stringformat:"s" == order|stringformat:"s" %}
+                    
                     <li class="list-group-item">Drink Name:&nbsp;{{ i.drink_flavor }} &emsp; Price:&nbsp;${{ i.drink_price }} &emsp; Milk:&nbsp;{{ i.milk }} &emsp; Topping:&nbsp;{{ i.topping }} &emsp; Sugar:&nbsp;{{ i.drink_sugar }} &emsp; Size:&nbsp;{{ i.drink_size }} &emsp; Temperature:&nbsp;{{ i.temperature }}</li>
                 {% endif %}
             {% endfor %}  
           </ul>
-    </div>  
-
+    </div>
+    
 </body>
 
 

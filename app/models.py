@@ -102,7 +102,7 @@ class Drink(models.Model):
     drink_sugar = models.IntegerField(choices=DRINK_SUGAR, null=True)
 
     def __str__(self):
-        return "[" + str(self.drink_id) + "] " + str(self.drink_flavor)
+        return "[ID: " + str(self.drink_id) + "]\n [Flavor: " + str(self.drink_flavor) + "]\n  [Size: " + str(self.drink_size) + "]\n  [Sugar: " + str(self.drink_sugar)  + "]\n  [Temperature: " + str(self.temperature) + "]\n  [Topping: " + str(self.topping) + "]"
 
 class Temperature(models.Model):
     temp_id = models.AutoField(primary_key=True)

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'qr_code',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +138,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 STATIC_URL = '/static/'
+
+SERVE_QR_CODE_IMAGE_PATH = 'qr-code-image/'
 
 # Activate Django-Heroku
 django_heroku.settings(locals())
