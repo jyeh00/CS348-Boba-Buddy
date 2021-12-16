@@ -98,7 +98,7 @@ DATABASES = {
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600)
+db_from_env = dj_database_url.parse('mysql://suh7n9rz1hi62jga:feecegwldj99tncg@uzb4o9e2oe257glt.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/a3htjeud4rvlgv08')
 DATABASES['default'].update(db_from_env)
 
 
