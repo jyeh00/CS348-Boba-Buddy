@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.db import connection
+from django.db import connection, transaction
+from django import forms
 from .models import *
 from .forms import OrderForm, LookupForm
 from .filters import OrderFilter
@@ -19,6 +20,28 @@ def main(request):
 def dashboard(request):
     return render(request, 'apptemplates/dashboard.html')
 
+def GetDrinkPrice(selected_menu_item, form):
+    print("in GetDrinkPrice()")
+    # with transaction.atomic():
+    this_tea_id = selected_menu_item.tea.tea_id
+    this_milk_id = selected_menu_item.milk.milk_id
+    this_topping_id = selected_menu_item.topping.topping_id
+    this_size = selected_menu_item.menu_size
+    print('this_size', this_size)
+    tea_price = Tea.objects.filter(tea_id=this_tea_id).values_list('tea_price', flat=True).first()
+    milk_price = Milk.objects.filter(milk_id=this_milk_id).values_list('milk_price', flat=True).first()
+    topping_price = Topping.objects.filter(topping_id=this_topping_id).values_list('topping_price', flat=True).first()
+    size_price = 0
+    if this_size == 'M':
+        size_price = 1
+    elif this_size == 'L':
+        size_price = 1.5
+    total_price = tea_price + milk_price + topping_price + size_price
+    print('total price', total_price)
+    return total_price
+    # final_order = Order(order_price=total_price)
+    # final_order.save()
+    # form.drink_price = total_price
 
 def createOrder(request):
     context = {}
@@ -33,27 +56,43 @@ def createOrder(request):
 
     try:
         selected_menu_item = Menu.objects.get(menu_flavor=string_menu)
-
-        print(selected_menu_item.menu_flavor)
-        print(selected_menu_item.tea)
-        print(selected_menu_item.menu_size)
-        print(selected_menu_item.menu_sugar)
     
         form = OrderForm()
+        this_tea_id = 0
+        this_milk_id = 0
+        this_topping_id = 0
+        new_order = Order(order_price=0)
         if request.method == 'POST':
             #print('Printing POST:', request.POST)
-            form = OrderForm(initial={
+            new_order.save()
+            form = OrderForm({
                         'drink_flavor': selected_menu_item.menu_flavor,
                         'tea': selected_menu_item.tea,
                         'temperature': selected_menu_item.temperature,
                         'milk': selected_menu_item.milk,
                         'drink_size': selected_menu_item.menu_size,
                         'drink_sugar': selected_menu_item.menu_sugar,
-                        'topping': selected_menu_item.topping})
+                        'topping': selected_menu_item.topping,
+                        'drink_price': selected_menu_item.menu_price,
+                        'order': new_order})
+            
+            # form.fields['order'].widget = forms.HiddenInput()
         
         if form.is_valid():
+            print('going to GetDrinkPrice()')
+            form.cleaned_data['drink_price'] = GetDrinkPrice(selected_menu_item, form)
             form.save()
-            return redirect('/')
+            new_order.order_price = form.cleaned_data['drink_price']
+            new_order.save()
+            # return redirect('/')
+        else:
+            print('FORM NOT VALID', form.errors)
+        # form.cleaned_data['drink_price'] = GetDrinkPrice(selected_menu_item, form)
+        # form.save()
+        # new_order.order_price = form.cleaned_data['drink_price']
+        # new_order.save()
+
+        # return redirect('/')
     except Menu.DoesNotExist:
         selected_menu_item = None
         form = OrderForm()
@@ -62,7 +101,7 @@ def createOrder(request):
             form = OrderForm(request.POST)
         
         if form.is_valid():
-            form.save()
+            # form.save()
             return redirect('/')
 
     context['form'] = form
