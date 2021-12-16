@@ -68,11 +68,11 @@
     <div id="myModal" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
+    <div class="modal-content" style="height: 650px;">
         <span class="close">&times;</span>
         {% for i in drinks %}
           {% if i.order_id|stringformat:"s" == order|stringformat:"s" %}
-            <img src="{% qr_url_from_text i size="T" version=12 cache_enabled=False %}" alt="Hello World!">
+            <img src="{% qr_url_from_text i size=20 version=12 cache_enabled=False %}" alt="Hello World!">
           {% endif %}
         {% endfor %}  
         <p>QR code here!</p>
