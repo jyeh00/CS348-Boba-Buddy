@@ -22,26 +22,23 @@ def dashboard(request):
 
 def GetDrinkPrice(selected_menu_item, form):
     print("in GetDrinkPrice()")
-    # with transaction.atomic():
-    this_tea_id = selected_menu_item.tea.tea_id
-    this_milk_id = selected_menu_item.milk.milk_id
-    this_topping_id = selected_menu_item.topping.topping_id
-    this_size = selected_menu_item.menu_size
-    print('this_size', this_size)
-    tea_price = Tea.objects.filter(tea_id=this_tea_id).values_list('tea_price', flat=True).first()
-    milk_price = Milk.objects.filter(milk_id=this_milk_id).values_list('milk_price', flat=True).first()
-    topping_price = Topping.objects.filter(topping_id=this_topping_id).values_list('topping_price', flat=True).first()
-    size_price = 0
-    if this_size == 'M':
-        size_price = 1
-    elif this_size == 'L':
-        size_price = 1.5
-    total_price = tea_price + milk_price + topping_price + size_price
-    print('total price', total_price)
-    return total_price
-    # final_order = Order(order_price=total_price)
-    # final_order.save()
-    # form.drink_price = total_price
+    with transaction.atomic():
+        this_tea_id = selected_menu_item.tea.tea_id
+        this_milk_id = selected_menu_item.milk.milk_id
+        this_topping_id = selected_menu_item.topping.topping_id
+        this_size = selected_menu_item.menu_size
+        print('this_size', this_size)
+        tea_price = Tea.objects.filter(tea_id=this_tea_id).values_list('tea_price', flat=True).first()
+        milk_price = Milk.objects.filter(milk_id=this_milk_id).values_list('milk_price', flat=True).first()
+        topping_price = Topping.objects.filter(topping_id=this_topping_id).values_list('topping_price', flat=True).first()
+        size_price = 0
+        if this_size == 'M':
+            size_price = 1
+        elif this_size == 'L':
+            size_price = 1.5
+        total_price = tea_price + milk_price + topping_price + size_price
+        print('total price', total_price)
+        return total_price
 
 def createOrder(request):
     context = {}
