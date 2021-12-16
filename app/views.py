@@ -126,14 +126,9 @@ def allDrinks(request):
 
 cursor1 = connection.cursor()
 def popularDrinks(request):
-    try:
-        cursor1.execute('call top_five_drinks')
-    except Exception as e:
-        print("Poop")
-        cursor1 = connection.cursor()
-        
-
+    cursor1.execute('call top_five_drinks')
     drinks = cursor1.fetchall()
+
     return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
     #drinks = Menu.objects.all()
     #return render(request, 'apptemplates/popular_drinks.html', {'drinks':drinks})
