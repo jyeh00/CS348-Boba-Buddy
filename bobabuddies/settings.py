@@ -148,3 +148,4 @@ SERVE_QR_CODE_IMAGE_PATH = 'qr-code-image/'
 
 # Activate Django-Heroku
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
